@@ -45,14 +45,24 @@ class BTree{
                         cur = cur->left;
                     }
                 }
-
             }
-
-
-
-
-
-
+        }
+        Node<T>* get_root(){
+            return root;
+        }
+        vector<T>pos_order(Node<T>){
+            vector<T>result;
+            if(root == nullptr){
+                return result;
+            }
+            //left
+            vector<T>left = pos_order(r->left);
+            result.insert(result.end(), left.begin(), left.end());
+            //right
+            vector<T>right = pos_order(r->right);
+            result.insert(result.end(), right.begin(), right.end());
+            //root
+            result.push_back(r->value);
         }
 
 };
