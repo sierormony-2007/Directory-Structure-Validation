@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <queue>
+#include <cmath>
 #include "node.hpp"
 using namespace std;
 
@@ -23,14 +25,14 @@ class BTree{
         left = nullptr;
         right = nullptr;
     }
-    void insert(string tName, int score, int match){
+    void insert(T value){
             if(root == nullptr){
-                root = new Node<T>(score);
+                root = new Node<T>(value);
                 return;
             }
             Node<T>* cur = root;
             while(true){
-                if(cur->score < score){
+                if(value.score < cur->value.score){
                     if(cur->right == nullptr){
                         cur->right = new Node<T>(score);
                         break;
@@ -67,7 +69,7 @@ class BTree{
 
         void print(vector<int>v){
             for(auto i:v){
-                cout<<i<<" ";
+                cout<<i.score<<" ";
             }
             cout<<endl;
         }
