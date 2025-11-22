@@ -16,10 +16,3 @@ struct Node{
     }
 };
 
-void insert(Node* root, int score, int id, string name){
-    if(root == nullptr){
-        return new Node(id, name);
-    }
-
-    if()
-}

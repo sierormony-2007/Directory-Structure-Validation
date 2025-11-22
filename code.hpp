@@ -65,6 +65,13 @@ class BTree{
             result.push_back(r->value);
         }
 
+        void print(vector<int>v){
+            for(auto i:v){
+                cout<<i<<" ";
+            }
+            cout<<endl;
+        }
+
 };
 
 
