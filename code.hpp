@@ -7,12 +7,13 @@ using namespace std;
 template <typename T>
 struct tNode{
     T value;
-    string name;
-    int match = 0;
+    T name;
+    T match = 0;
     tNode<T> *left;
     tNode<T> *right;
-    tNode( T val){
+    tNode( T val, T name){
         value = val;
+        name = n;
         left = nullptr;
         right = nullptr;
     }
