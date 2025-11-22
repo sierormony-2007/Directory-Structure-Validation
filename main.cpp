@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <string.h>
+#include <string>
 #include "code.hpp"
 using namespace std;
 int main(){
