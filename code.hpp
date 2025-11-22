@@ -50,7 +50,7 @@ class BTree{
         Node<T>* get_root(){
             return root;
         }
-        vector<T>pos_order(Node<T>){
+        vector<T>pos_order_traversal(Node<T>){
             vector<T>result;
             if(root == nullptr){
                 return result;
