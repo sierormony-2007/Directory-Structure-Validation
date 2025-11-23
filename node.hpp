@@ -1,17 +1,16 @@
 #ifndef NODE_HPP
 #define NODE_HPP
 
-#include <string> // include string
+#include <string>
 
 struct Node {
-    int matchId;           // Unique match ID
-    std::string pL;        // Left participant
-    std::string pR;        // Right participant
-    std::string winner;    // Winner of this match
-    Node* left;            // Pointer to left child
-    Node* right;           // Pointer to right child
+    int matchId;
+    std::string pL;      // Left participant
+    std::string pR;      // Right participant
+    std::string winner;  // Winner
+    Node* left;          // Previous match left
+    Node* right;         // Previous match right
 
-    // Constructor
     Node(int id) {
         matchId = id;
         pL = "";
