@@ -41,7 +41,7 @@ int main() {
     cout << "\n=== FINAL RESULT ===\n";
     cout << "Team A total goals: " << goalsTeamA << "\n";
     cout << "Team F total goals: " << goalsTeamF << "\n";
-    cout << "🏆 Overall Winner: Team A\n";
+    cout << " Overall Winner: Team A\n";
 
     return 0;
 }
