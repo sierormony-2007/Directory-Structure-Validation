@@ -2,112 +2,46 @@
 #include <vector>
 #include <string>
 #include "code.hpp"
+
 using namespace std;
 
-// tNode<int> *root =  new tNode<int>(6);
-// tNode<int> *left =  new tNode<int>(9);
-// tNode<int> *right =  new tNode<int>(3);
-
-// root->left = left;
-// root->right = right;
-
-struct MatchScore {
-    int scoreL;
-    int scoreR;
-};
-    // Example list of players
-//     vector<string> players = {"Alice", "Bob", "Charlie", "David", "Eve"};
-
-//     // Create tournament
-//     BTree tournament;
-//     tournament.buildBra(players);
-
-//     cout << "Initial Bracket:" << endl;
-//     tournament.printBracket();
-
-//     // Simulate recording results
-//     cout << "\nRecording Results:" << endl;
-//     tournament.recRes(1, "Alice");   // first match
-//     tournament.recRes(2, "Charlie"); // second match
-//     tournament.recRes(3, "Eve");     // third match
-
-//     tournament.recRes(4, "Alice");   // semifinal
-//     tournament.recRes(5, "Alice");   // final
-
-//     cout << "\nUpdated Bracket:" << endl;
-//     tournament.printBracket();
-
-//     // Path to final for a player
-//     string player = "Alice";
-//     vector<int> path = tournament.pathtoFinal(player);
-//     cout << "\nPath to final for " << player << ": ";
-//     for (int id : path) {
-//         cout << id << " ";
-//     }
-//     cout << endl;
-
-//     // When two players would meet
-//     auto [matchId, round] = tournament.wouldMeet("Bob", "Charlie");
-//     if (matchId != -1) {
-//         cout << "\nBob and Charlie would meet at match " << matchId 
-//              << " in round " << round << endl;
-//     } else {
-//         cout << "\nBob and Charlie never meet." << endl;
-//     }
-
-//     return 0;
-
 int main() {
-    // Teams
-    vector<string> players = {"Team A", "Team B"};
+    // 8 teams
+    vector<string> teams = {"Team A", "Team B", "Team C", "Team D",
+                            "Team E", "Team F", "Team G", "Team H"};
 
-    // Create tournament
     BTree tournament;
-    tournament.buildBra(players);
+    tournament.buildBracket(teams);
 
-    cout << "=== FOOTBALL GAME (3 ROUNDS) ===\n" << endl;
+    cout << "=== FOOTBALL TOURNAMENT ===\n\n";
 
-    // Scores for each round
-    vector<MatchScore> scores = {
-        {3, 1}, // Round 1
-        {0, 0}, // Round 2
-        {4, 2}  // Round 3
-    };
+    // Round 1 results
+    cout << "=== Round 1 ===\n";
+    tournament.recordResult(1, "Team A"); // Match 1: Team A vs Team B
+    tournament.recordResult(2, "Team D"); // Match 2: Team C vs Team D
+    tournament.recordResult(3, "Team F"); // Match 3: Team E vs Team F
+    tournament.recordResult(4, "Team H"); // Match 4: Team G vs Team H
+    tournament.printBracket();
 
-    int totalA = 0;
-    int totalB = 0;
+    // Round 2 results
+    cout << "\n=== Round 2 ===\n";
+    tournament.recordResult(5, "Team A"); // Winner of Match 1 vs Winner of Match 2
+    tournament.recordResult(6, "Team F"); // Winner of Match 3 vs Winner of Match 4
+    tournament.printBracket();
 
-    for (int round = 0; round < scores.size(); ++round) {
-        cout << "Round " << round + 1 << endl;
-        cout << players[0] << " score: " << scores[round].scoreL << endl;
-        cout << players[1] << " score: " << scores[round].scoreR << endl;
+    // Round 3 results (Final)
+    cout << "\n=== Round 3 (Final) ===\n";
+    tournament.recordResult(7, "Team A"); // Winner of Match 5 vs Winner of Match 6
+    tournament.printBracket();
 
-        totalA += scores[round].scoreL;
-        totalB += scores[round].scoreR;
+    // Determine total goals (optional, if you want to sum them)
+    int goalsTeamA = 3 + 0 + 4; // example scores
+    int goalsTeamF = 1 + 0 + 2;
 
-        // Determine round winner
-        if (scores[round].scoreL > scores[round].scoreR) {
-            cout << "Winner: " << players[0] << "\n" << endl;
-        } else if (scores[round].scoreL < scores[round].scoreR) {
-            cout << "Winner: " << players[1] << "\n" << endl;
-        } else {
-            cout << "Result: Draw\n" << endl;
-        }
-    }
-
-    // Final result
-    cout << "=== FINAL RESULT ===" << endl;
-    cout << players[0] << " total goals: " << totalA << endl;
-    cout << players[1] << " total goals: " << totalB << endl;
-
-    // Overall winner
-    if (totalA > totalB) {
-        cout << "🏆 Overall Winner: " << players[0] << endl;
-    } else if (totalB > totalA) {
-        cout << "🏆 Overall Winner: " << players[1] << endl;
-    } else {
-        cout << "🏆 Overall Result: Draw" << endl;
-    }
+    cout << "\n=== FINAL RESULT ===\n";
+    cout << "Team A total goals: " << goalsTeamA << "\n";
+    cout << "Team F total goals: " << goalsTeamF << "\n";
+    cout << " Overall Winner: Team A\n";
 
     return 0;
- }
+}
