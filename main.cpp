@@ -24,7 +24,7 @@ int main() {
     tournament.printBracketByRound();
 
     Node* root = tournament.getRoot();
-    cout << "\n🏆 Overall Winner: " << root->winner << "\n";
+    cout << "\n Overall Winner: " << root->winner << "\n";
 
     return 0;
 }
