@@ -5,8 +5,7 @@
         "type_traits": "cpp",
         "xlocmon": "cpp",
         "xtr1common": "cpp",
-        "xutility": "cpp",
-        "iostream": "cpp"
+        "xutility": "cpp"
     },
     "liveServer.settings.multiRootWorkspaceName": "Directory-Structure-Validation",
     "C_Cpp.errorSquiggles": "disabled"
