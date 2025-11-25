@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    vector<string> teams = {"Team A", "Team B", "Team C", "Team D",
+    vector<string> teams = { "Team A", "Team B","Team C", "Team D",
                             "Team E", "Team F", "Team G", "Team H"};
 
     BTree tournament;
@@ -21,10 +21,11 @@ int main() {
     tournament.recRes(6, "Team H");
     tournament.recRes(7, "Team A"); // Final
 
-    cout << "\n=== FINAL RESULTS ===\n";
+    
     tournament.printBracketByRound();
 
     Node* root = tournament.getRoot();
+    cout << "\n=== FINAL RESULTS ===\n";
     cout << "\n Overall Winner: " << root->winner << "\n";
 
     return 0;
