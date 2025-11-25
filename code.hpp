@@ -57,7 +57,6 @@ public:
 
     void buildBra(vector<string> players) {
         if (players.empty()) return;
-
         int n = players.size();
         int rounds = ceil(log2(n));
         int totalLeaves = pow(2, rounds);
@@ -67,7 +66,7 @@ public:
         }
 
         queue<Node*> curLevel;
-        for (int i = 0; i < players.size(); i += 2) {
+        for (int i = 0; i < players.size(); i += 2) {//create rounds
             Node* match = new Node(nextMatch++);
             match->pL = players[i];
             match->pR = players[i + 1];
@@ -77,25 +76,24 @@ public:
 
             curLevel.push(match);
         }
-
         while (curLevel.size() > 1) {
             queue<Node*> nextLevel;
-            while (curLevel.size() > 1) {
+            while (curLevel.size() > 1) {//check pairs
                 Node* left = curLevel.front(); curLevel.pop();
                 Node* right = curLevel.front(); curLevel.pop();
                 Node* parent = new Node(nextMatch++);
-                parent->left = left;
-                parent->right = right;
+                parent->left = left;//subtrees
+                parent->right = right;//subtrees
 
-                if (!left->winner.empty()) parent->pL = left->winner;
+                if (!left->winner.empty()) parent->pL = left->winner;//contains winnner from left so we push it up to compare with the right
                 if (!right->winner.empty()) parent->pR = right->winner;
 
-                nextLevel.push(parent);
+                nextLevel.push(parent);//add it to the next level
             }
-            if (!curLevel.empty()) nextLevel.push(curLevel.front());
-            curLevel = nextLevel;
+            if (!curLevel.empty()) nextLevel.push(curLevel.front());//check odd
+            curLevel = nextLevel;//push to nexe level
         }
-        root = curLevel.front();
+        root = curLevel.front();//update root to cur level
     }
 
     bool recRes(int matchId, const string& winnerName) {
